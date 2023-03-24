@@ -1,0 +1,20 @@
+let val lvl = `{goodman}`
+    val name = "goodman" raisedTo lvl
+    val year = "2023" raisedTo lvl
+    val gender = true raisedTo lvl
+    val interests = ["sleep"] raisedTo lvl
+
+    val profile = (lvl, name, year, gender, interests)
+    fun agent profile_other =
+        print profile_other;
+        profile
+    val data = (profile, agent, self ())
+
+    fun listen () =
+        receive [
+            hn ("NEWMATCH", profile_other_shows_me) => print profile_other_shows_me; listen ()
+        ]
+in
+    send (whereis ("QmRVU3zXaP5KEEwCgXZmLQUoe7bCvfNm6etN2AzTWsUqUy", "datingServer"), ("NEWPROFILE", data));
+    listen ()
+end

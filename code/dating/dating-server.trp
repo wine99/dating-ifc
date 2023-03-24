@@ -1,0 +1,87 @@
+(* Language-based security; Aarhus University *)
+(* Starting files for the information-flow assignment *)
+
+import lists
+let fun declassify_profile profile target_lvl =
+        printString "declassify_profile";
+        case profile of (lvl, name, year, gender, interests) =>
+            ( declassify (lvl, authority, target_lvl)
+            , declassify (name, authority, target_lvl)
+            , declassify (year, authority, target_lvl)
+            , declassify (gender, authority, target_lvl)
+            , declassify (interests, authority, target_lvl) )
+
+    fun server () = (* TODO: finish this *)
+        let fun server database = 
+            let val data = receive [
+                hn ("NEWPROFILE", data) =>
+                    printString "NEWPROFILE_DATA:";
+                    printWithLabels data;
+                    printString "";
+                    case data of (profile, agent, pid) => 
+                    case profile of (lvl, name, year, gender, interests) => (
+                        map (fn data_other =>
+                                case data_other of (profile_other, agent_other, pid_other) =>
+                                case profile_other of (lvl_other, name_other, year_other, gender_other, interests_other) =>
+                                    let
+                                        val _ = printString ("Calling " ^ name ^ "'s agent on " ^ name_other ^ "'s profile")
+                                        (*! case expression increases blocking level *)
+                                        val (like1, showed_prof) =
+                                            let pini authority
+                                                val (like1, showed_prof) = agent profile_other
+                                            in (like1, showed_prof)
+                                            end
+                                        val _ = printWithLabels (like1, showed_prof)
+                                        val like1 = declassify (like1, authority, `{}`)
+
+                                        val _ = printString ("Calling " ^ name_other ^ "'s agent on " ^ name ^ "'s profile")
+                                        val (like2, showed_prof_of_other) =
+                                            let pini authority
+                                                val (like2, showed_prof_of_other) = agent_other profile
+                                            in (like2, showed_prof_of_other)
+                                            end
+                                        val _ = printWithLabels (like2, showed_prof_of_other)
+                                        val like2 = declassify (like2, authority, `{}`)
+                                    in
+                                        case (like1, like2) of
+                                            (true, true) =>
+                                                let val _ = debugpc ()
+                                                    (*! calling function increases blocking level from arguments? *)
+                                                    val showed_prof = let pini authority val dec = declassify_profile showed_prof lvl_other in dec end
+                                                    val showed_prof_of_other = let pini authority val dec = declassify_profile showed_prof_of_other lvl in dec end
+                                                in
+                                                    printString ("Sending " ^ name_other ^ "'s profile to " ^ name);
+                                                    send (pid, ("NEWMATCH", showed_prof_of_other));
+                                                    printString ("Sending " ^ name ^ "'s profile to " ^ name_other);
+                                                    send (pid_other, ("NEWMATCH", showed_prof));
+                                                    printString ""
+                                                end
+                                          | _ => printString ""
+                                    end)
+                            database;
+
+                        data
+                    )
+            ]
+            in server (data :: database)
+            end
+        in
+        server []
+        end
+
+
+    (* Our main function starts the server and then requests the
+       dispatcher to send some clients this way. *)
+
+    fun main () =       
+        let val thisNode = node (self ())
+            val _ = printString ("Running node with identifier: " ^ thisNode)
+            val _ =  register ("datingServer", spawn server, authority)
+        in  (* TODO: you probably want to comment out the next line
+                     while you develop your solution and work on a few 
+                     custom clients;  *)
+            send (whereis ("@dispatcher", "dispatcher"), ("DISPATCH", thisNode)); 
+            ()
+        end
+in main ()
+end

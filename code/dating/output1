@@ -1,0 +1,83 @@
+root@4037850a7c0e:/workspaces/troup-example/code/dating# make
+
+/Troupe/bin/troupec dating-server.trp -o ./out/dating-server.js
+node /Troupe/rt/built/troupe.js -f=./out/dating-server.js --id=../ids/id-server.json --trustmap=../trustmaps/GoT.json --aliases=aliases.json
+Running node with identifier: QmRVU3zXaP5KEEwCgXZmLQUoe7bCvfNm6etN2AzTWsUqUy
+>>> Main thread finished with value: ()@{}%{}
+NEWPROFILE_DATA:
+(({ramsay}@{}%{}, "Ramsay"@{ramsay}%{}, 2103@{ramsay}%{}, false@{ramsay}%{}, ["beer"@{}%{}, "winter"@{}%{}]@{ramsay}%{})@{}%{}, fn => ..@{}%{}, dc2a9813-9558-4ca5-947b-3b4e8485cdcd@{}%{})@{}%{}
+
+NEWPROFILE_DATA:
+(({daenerys}@{}%{}, "Daenerys"@{daenerys}%{}, 2105@{daenerys}%{}, true@{daenerys}%{}, ["dragons"@{}%{}, "wars"@{}%{}, "fire"@{}%{}]@{daenerys}%{})@{}%{}, fn => ..@{}%{}, 0e6cbabc-003f-4380-9e4c-f10ebaff7b97@{}%{})@{}%{}
+
+Calling Daenerys's agent on Ramsay's profile
+(true@{ramsay}%{ramsay}, ({daenerys}@{ramsay}%{ramsay}, "Daenerys"@{ramsay}%{ramsay}, 2105@{ramsay}%{ramsay}, true@{ramsay}%{ramsay}, ["dragons"@{ramsay}%{ramsay}, "wars"@{ramsay}%{ramsay}, "fire"@{ramsay}%{ramsay}]@{ramsay}%{ramsay})@{ramsay}%{ramsay})@{}%{}
+Calling Ramsay's agent on Daenerys's profile
+(true@{daenerys}%{daenerys}, ({ramsay}@{daenerys}%{daenerys}, "Ramsay"@{daenerys}%{daenerys}, 2103@{daenerys}%{daenerys}, false@{daenerys}%{daenerys}, ["beer"@{daenerys}%{daenerys}, "winter"@{daenerys}%{daenerys}]@{daenerys}%{daenerys})@{daenerys}%{daenerys})@{}%{}
+PID:437f3dbf-70f6-4940-97c6-ca0eba9c0fd2@{}%{}     PC:{}                BL:{}                HNNORMAL             _sp:112              
+declassify_profile
+declassify_profile
+Sending Ramsay's profile to Daenerys
+Sending Daenerys's profile to Ramsay
+
+NEWPROFILE_DATA:
+(({eddard}@{}%{}, "Eddard"@{eddard}%{}, 2103@{eddard}%{}, false@{eddard}%{}, ["swords"@{}%{}, "winter"@{}%{}, "wars"@{}%{}]@{eddard}%{})@{}%{}, fn => ..@{}%{}, 5abdd35a-3603-4d54-b05a-feada125366b@{}%{})@{}%{}
+
+Calling Eddard's agent on Daenerys's profile
+(true@{daenerys}%{daenerys}, ({eddard}@{daenerys}%{daenerys}, "Eddard"@{daenerys}%{daenerys}, 2103@{daenerys}%{daenerys}, false@{daenerys}%{daenerys}, ["swords"@{daenerys}%{daenerys}, "winter"@{daenerys}%{daenerys}, "wars"@{daenerys}%{daenerys}]@{daenerys}%{daenerys})@{daenerys}%{daenerys})@{}%{}
+Calling Daenerys's agent on Eddard's profile
+(true@{eddard}%{eddard}, ({daenerys}@{eddard}%{eddard}, "Daenerys"@{eddard}%{eddard}, 2105@{eddard}%{eddard}, true@{eddard}%{eddard}, ["dragons"@{eddard}%{eddard}, "wars"@{eddard}%{eddard}, "fire"@{eddard}%{eddard}]@{eddard}%{eddard})@{eddard}%{eddard})@{}%{}
+PID:437f3dbf-70f6-4940-97c6-ca0eba9c0fd2@{}%{}     PC:{}                BL:{}                HNNORMAL             _sp:112              
+declassify_profile
+declassify_profile
+Sending Daenerys's profile to Eddard
+Sending Eddard's profile to Daenerys
+
+Calling Eddard's agent on Ramsay's profile
+(true@{ramsay}%{ramsay}, ({eddard}@{ramsay}%{ramsay}, "Eddard"@{ramsay}%{ramsay}, 2103@{ramsay}%{ramsay}, false@{ramsay}%{ramsay}, ["swords"@{ramsay}%{ramsay}, "winter"@{ramsay}%{ramsay}, "wars"@{ramsay}%{ramsay}]@{ramsay}%{ramsay})@{ramsay}%{ramsay})@{}%{}
+Calling Ramsay's agent on Eddard's profile
+(true@{eddard}%{eddard}, ({ramsay}@{eddard}%{eddard}, "Ramsay"@{eddard}%{eddard}, 2103@{eddard}%{eddard}, false@{eddard}%{eddard}, ["beer"@{eddard}%{eddard}, "winter"@{eddard}%{eddard}]@{eddard}%{eddard})@{eddard}%{eddard})@{}%{}
+PID:437f3dbf-70f6-4940-97c6-ca0eba9c0fd2@{}%{}     PC:{}                BL:{}                HNNORMAL             _sp:129              
+declassify_profile
+declassify_profile
+Sending Ramsay's profile to Eddard
+Sending Eddard's profile to Ramsay
+
+NEWPROFILE_DATA:
+(({cersei}@{}%{}, "Cersei"@{cersei}%{}, 2120@{cersei}%{}, true@{cersei}%{}, ["family"@{}%{}, "royalty"@{}%{}, "fire"@{}%{}, "bells"@{}%{}]@{cersei}%{})@{}%{}, fn => ..@{}%{}, 7c485042-ef50-4229-8768-0283916363fa@{}%{})@{}%{}
+
+Calling Cersei's agent on Eddard's profile
+(false@{eddard}%{eddard}, ()@{eddard}%{eddard})@{}%{}
+Calling Eddard's agent on Cersei's profile
+(true@{cersei}%{cersei}, ({eddard}@{cersei}%{cersei}, "Eddard"@{cersei}%{cersei}, 2103@{cersei}%{cersei}, false@{cersei}%{cersei}, ["swords"@{cersei}%{cersei}, "winter"@{cersei}%{cersei}, "wars"@{cersei}%{cersei}]@{cersei}%{cersei})@{cersei}%{cersei})@{}%{}
+
+Calling Cersei's agent on Daenerys's profile
+(false@{daenerys}%{daenerys}, ()@{daenerys}%{daenerys})@{}%{}
+Calling Daenerys's agent on Cersei's profile
+(true@{cersei}%{cersei}, ({daenerys}@{cersei}%{cersei}, "Daenerys"@{cersei}%{cersei}, 2105@{cersei}%{cersei}, true@{cersei}%{cersei}, ["dragons"@{cersei}%{cersei}, "wars"@{cersei}%{cersei}, "fire"@{cersei}%{cersei}]@{cersei}%{cersei})@{cersei}%{cersei})@{}%{}
+
+Calling Cersei's agent on Ramsay's profile
+(false@{ramsay}%{ramsay}, ()@{ramsay}%{ramsay})@{}%{}
+Calling Ramsay's agent on Cersei's profile
+(true@{cersei}%{cersei}, ({ramsay}@{cersei}%{cersei}, "Ramsay"@{cersei}%{cersei}, 2103@{cersei}%{cersei}, false@{cersei}%{cersei}, ["beer"@{cersei}%{cersei}, "winter"@{cersei}%{cersei}]@{cersei}%{cersei})@{cersei}%{cersei})@{}%{}
+
+NEWPROFILE_DATA:
+(({bob}@{}%{}, "Bob"@{}%{}, 2100@{}%{}, false@{}%{}, ["science"@{}%{}, "games"@{}%{}, "cooking"@{}%{}]@{}%{})@{}%{}, fn => ..@{}%{}, 5c4fe29e-c0e9-4a0f-9b21-7f94e517bd72@{}%{})@{}%{}
+
+Calling Bob's agent on Cersei's profile
+(false@{cersei}%{cersei}, ()@{cersei}%{cersei})@{}%{}
+Calling Cersei's agent on Bob's profile
+(false@{bob}%{bob}, ()@{bob}%{bob})@{}%{}
+
+Calling Bob's agent on Eddard's profile
+(true@{eddard}%{eddard}, ({bob}@{eddard}%{eddard}, "Bob"@{eddard}%{eddard}, 2100@{eddard}%{eddard}, false@{eddard}%{eddard}, ["science"@{eddard}%{eddard}, "games"@{eddard}%{eddard}, "cooking"@{eddard}%{eddard}]@{eddard}%{eddard})@{eddard}%{eddard})@{}%{}
+Calling Eddard's agent on Bob's profile
+(true@{bob}%{bob}, ({eddard}@{bob}%{bob}, "Eddard"@{bob}%{bob}, 2103@{bob}%{bob}, false@{bob}%{bob}, ["swords"@{bob}%{bob}, "winter"@{bob}%{bob}, "wars"@{bob}%{bob}]@{bob}%{bob})@{bob}%{bob})@{}%{}
+PID:437f3dbf-70f6-4940-97c6-ca0eba9c0fd2@{}%{}     PC:{}                BL:{}                HNNORMAL             _sp:129              
+declassify_profile
+declassify_profile
+Sending Eddard's profile to Bob
+Runtime error in thread 437f3dbf-70f6-4940-97c6-ca0eba9c0fd2@{}%{}
+>> Illegal trust flow when sending information to a remote node
+ | the trust level of the recepient node: {}
+ | the level of the information to send:  {bob}
